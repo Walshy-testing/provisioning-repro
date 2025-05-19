@@ -8,7 +8,10 @@ npm i
 
 cd ../provision-worker
 npm i
+
+# Setup Cloudflare API token
 echo "API_TOKEN=<YOUR_API_TOKEN>" > .dev.vars
+npx wrangler secret put API_TOKEN
 ```
 
 Change account IDs in `wrangler.jsonc` to point to your target main account.
