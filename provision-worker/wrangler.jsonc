@@ -1,0 +1,31 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "provision-worker",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-05-09",
+	"account_id": "4e599df4216133509abaac54b109a647",
+	"migrations": [
+		{
+			"new_sqlite_classes": [
+				"ProvisioningTest"
+			],
+			"tag": "v1"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "ProvisioningTest",
+				"name": "PROVISION_DO"
+			}
+		]
+	},
+	"observability": {
+		"enabled": true
+	},
+	"services": [{ "binding": "HEALTHCHECK_PROBER", "service": "healthcheck-probe" }],
+}
